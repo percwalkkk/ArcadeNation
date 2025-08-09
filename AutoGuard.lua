@@ -62,30 +62,7 @@ UserInputService.InputEnded:Connect(function(input)
 	end
 end)
 
--- Find closest opponent with the ball
-local function getClosestOpponentWithBall()
-	local myChar = LocalPlayer.Character
-	if not myChar or not myChar:FindFirstChild("HumanoidRootPart") then return nil end
-
-	local closest = nil
-	local shortestDist = math.huge
-
-	for _, player in ipairs(Players:GetPlayers()) do
-		if player ~= LocalPlayer and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-			local dist = (myChar.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude
-				if dist < shortestDist then
-					closest = player
-					shortestDist = dist
-			end
-		end
-	end
-
-	return closest
-end
-
--- Main logic
 RunService.RenderStepped:Connect(function()
-		wait()
 
 	if not getgenv().AutoGuard then return end
 
@@ -128,7 +105,7 @@ end
 		humanoid:Move(moveDir.Unit, false)
 	else
 		humanoid:Move(Vector3.zero, false)
-        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Guard"):FireServer(true)
+        game:GetService("ReplicatedStorage").Events.Guard:FireServer(true)
 
 	end
 end)
@@ -140,7 +117,7 @@ game:GetService("Players")[tostring(findOpponent().opponent)].Values.Shooting.Ch
 			print('check 1')
 	if getgenv().AutoBlock == true then
 				print('check 2')
-    game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Block"):FireServer()
+    game:GetService("ReplicatedStorage").Events.Block:FireServer()
     end
 end
 end)
