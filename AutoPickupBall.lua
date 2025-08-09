@@ -7,7 +7,6 @@ local UserInputService = game:GetService("UserInputService")
 
 RunService.RenderStepped:Connect(function()
     if getgenv().AutoPickupBall then
-if game:GetService("Players").LocalPlayer.Values.InGame.Value ~= true then
         if game:GetService("Players").LocalPlayer.Values.Basketball == nil then
 
 		currentPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -15,6 +14,5 @@ if game:GetService("Players").LocalPlayer.Values.InGame.Value ~= true then
 		fireproximityprompt(workspace.Practice_Court.BallRack.ProximityPrompt); wait()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = currentPos
 		end
-    end
     end
   end)
