@@ -140,8 +140,11 @@ end)
 
 game:GetService("Players")[tostring(findOpponent().opponent)].Values.Shooting.Changed:Connect(function(newValue)
 	print(getgenv().AutoBlock)
+		print("check 0")
     if newValue == true then
+			print("check one shooting val is true")
 	if getgenv().AutoBlock == true then
+				print("check2")
     game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Block"):FireServer()
     end
 end
