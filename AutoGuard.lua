@@ -34,20 +34,6 @@ local movementKeys = {
 	[Enum.KeyCode.D] = true,
 }
 
--- Handle input
-UserInputService.InputBegan:Connect(function(input, gameProcessed)
-	if gameProcessed then return end
-
-	if input.KeyCode == Enum.KeyCode.P then
-		toggled = not toggled
-		print("AutoGuard: " .. (toggled and "ON" or "OFF"))
-	end
-
-	if movementKeys[input.KeyCode] then
-		isMovingManually = true
-	end
-end)
-
 UserInputService.InputEnded:Connect(function(input)
 	if movementKeys[input.KeyCode] then
 		local stillMoving = false
@@ -84,6 +70,7 @@ end
 
 -- Main logic
 RunService.RenderStepped:Connect(function()
+		wait()
 
 	if not getgenv().AutoGuard then return end
 
