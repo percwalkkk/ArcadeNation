@@ -34,6 +34,21 @@ local movementKeys = {
 	[Enum.KeyCode.D] = true,
 }
 
+-- Handle input
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+	if gameProcessed then return end
+
+	if input.KeyCode == Enum.KeyCode.P then
+		toggled = not toggled
+		print("AutoGuard: " .. (toggled and "ON" or "OFF"))
+	end
+
+	if movementKeys[input.KeyCode] then
+		isMovingManually = true
+	end
+end)
+
+
 UserInputService.InputEnded:Connect(function(input)
 	if movementKeys[input.KeyCode] then
 		local stillMoving = false
@@ -75,7 +90,6 @@ RunService.RenderStepped:Connect(function()
 	if not getgenv().AutoGuard then return end
 
     if game:GetService("Players").LocalPlayer.Values.InGame.Value == true then
-    --
     else return
 end
 
@@ -83,7 +97,6 @@ end
 	if not myChar or not myChar:FindFirstChild("HumanoidRootPart") or not myChar:FindFirstChildOfClass("Humanoid") then return end
 
 	if game:GetService("Players").LocalPlayer.Values.Basketball.Value ~= nil then
-		toggled = false
         getgenv().AutoGuard = false
 		return
 	end
@@ -99,23 +112,18 @@ end
 	local targetHRP = targetPlayer.Character.HumanoidRootPart
 	local velocity = targetHRP.Velocity
 
-	-- If opponent is not moving, fallback to LookVector
 	if velocity.Magnitude < 1 then
 		velocity = targetHRP.CFrame.LookVector * 2
 	end
 
-	-- Get flat direction of their actual movement
 	local opponentMoveDir = Vector3.new(velocity.X, 0, velocity.Z).Unit
-	local spacingDistance = 3 -- how far ahead to stay
+	local spacingDistance = 3 
 
-	-- Target position = ahead of opponent along their path
 	local targetPosition = targetHRP.Position + opponentMoveDir * spacingDistance
 
-	-- Determine direction to that position
 	local toTarget = targetPosition - game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 	local moveDir = Vector3.new(toTarget.X, 0, toTarget.Z)
 
-	-- Only move if not already close enough
 	if moveDir.Magnitude > 1 then
 		humanoid:Move(moveDir.Unit, false)
 	else
