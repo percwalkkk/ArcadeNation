@@ -67,7 +67,11 @@ end)
 
 
 -- Main logic
-RunService.Heartbeat:Connect(function()
+RunService.Heartbeat:Connect(function(dt)
+
+		lastUpdate += dt
+	if lastUpdate < 0.07 then return end
+	lastUpdate = 0
 		
 	if not getgenv().AutoGuard then return end
 
