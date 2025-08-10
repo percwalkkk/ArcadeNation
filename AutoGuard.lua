@@ -1,9 +1,10 @@
 local courts = workspace.Courts;
 local findOpponent = function()
-    local values = {court, opponent};
+    local values = {court, opponent, hoopPosition};
    for __, court in pairs (game.Workspace.Courts:GetDescendants()) do
    if string.find(court.Name, 'Player') and court.Value == game.Players.LocalPlayer.Name then
     values.court = court.Parent.Parent.Name
+	values.hoopPosition = court.Parent.Parent.Hoop.Goal.Position
 
     if court.Name == 'Player2' then
     values.opponent = game.Players[court.Parent.Player1.Value]
