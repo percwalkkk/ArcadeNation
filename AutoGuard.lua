@@ -3,7 +3,7 @@ local findOpponent = function()
     local values = {court, opponent, hoopPosition};
    for __, court in pairs (game.Workspace.Courts:GetDescendants()) do
    if string.find(court.Name, 'Player') and court.Value == game.Players.LocalPlayer.Name then
-    values.court = court.Parent.Parent.Name
+    values.court = court.Parent.Parent
 	values.hoopPosition = court.Parent.Parent.Hoop.Goal.Position
 
     if court.Name == 'Player2' then
@@ -87,8 +87,7 @@ end
 	local humanoid = myChar:FindFirstChildOfClass("Humanoid")
 
 	local targetPlayer = findOpponent().opponent
-    local myHoop = findOpponent().court
-    local myHoopPosition = myHoop.Hoop.Goal.Position
+    local myHoopPosition = findOpponent().hoopPosition
 	if not (targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart")) then return end
 
 	local targetHRP = targetPlayer.Character.HumanoidRootPart
