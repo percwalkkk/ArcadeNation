@@ -4,6 +4,7 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
 local UserInputService = game:GetService("UserInputService")
 
+local currentPos;
 
 RunService.RenderStepped:Connect(function()
     if getgenv().AutoPickupBall then
