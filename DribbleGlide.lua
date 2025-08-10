@@ -14,7 +14,6 @@ if getgenv().DribbleGlide then
             CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position, game.Players.LocalPlayer.Character.HumanoidRootPart.Position + camCF.LookVector),
             0.25
         )
-        UpdateDribble(dt)
         end
     end
   end)
