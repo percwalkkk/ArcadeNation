@@ -1,3 +1,5 @@
+
+local lastUpdate = 0;
 local courts = workspace.Courts;
 local findOpponent = function()
     local values = {court, opponent};
@@ -64,8 +66,12 @@ end)
 
 
 -- Main logic
-RunService.RenderStepped:Connect(function()
+RunService.RenderStepped:Connect(function(dt)
 
+	lastUpdate += dt
+    if lastUpdate < 0.05 then return end
+    lastUpdate = 0
+		
 	if not getgenv().AutoGuard then return end
 
     if game:GetService("Players").LocalPlayer.Values.InGame.Value ~= true then
