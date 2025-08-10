@@ -86,6 +86,8 @@ end
 	local humanoid = myChar:FindFirstChildOfClass("Humanoid")
 
 	local targetPlayer = findOpponent().opponent
+    local myHoop = findOpponent().court
+    local myHoopPosition = myHoop.Hoop.Goal.Position
 	if not (targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart")) then return end
 
 	local targetHRP = targetPlayer.Character.HumanoidRootPart
@@ -109,6 +111,15 @@ end
 		humanoid:Move(Vector3.zero, false)
         game:GetService("ReplicatedStorage").Events.Guard:FireServer(true)
 
+	end
+
+    local hoopDir = (myHoopPosition - myHRP.Position).Unit
+	local oppDir = (targetHRP.Position - myHRP.Position).Unit
+
+	-- Midpoint direction between directly facing opponent and keeping hoop behind
+	local finalFacingDir = ((oppDir - hoopDir).Unit)
+	if finalFacingDir.Magnitude > 0 then
+		myHRP.CFrame = CFrame.new(myHRP.Position, myHRP.Position + finalFacingDir)
 	end
 	end)
 
