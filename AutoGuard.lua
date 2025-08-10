@@ -131,6 +131,7 @@ end
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Guard"):FireServer(true)
 
 	end
+	end)
 
 game:GetService("Players")[tostring(findOpponent().opponent)].Values.Shooting.Changed:Connect(function(newValue)
 		print('check 0')
