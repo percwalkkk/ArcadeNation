@@ -67,7 +67,7 @@ end)
 
 
 -- Main logic
-RunService.Heartbeat:Connect(function()
+RunService.RenderStepped:Connect(function()
 
 		--[[lastUpdate += dt
 	if lastUpdate < 0.07 then return end
