@@ -18,7 +18,7 @@ end
 getgenv().currentOpponent = findOpponent().opponent
 getgenv().currentCourt = findOpponent().court
 
-game:GetService("Players").LocalPlayer.Values.InGame.Changed:Connect(functon()
+game:GetService("Players").LocalPlayer.Values.InGame.Changed:Connect(function()
   if game:GetService("Players").LocalPlayer.Values.InGame.Value == true then
   getgenv().currentOpponent = findOpponent().opponent
   getgenv().currentCourt = findOpponent().court
