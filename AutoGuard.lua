@@ -89,8 +89,8 @@ RunService.RenderStepped:Connect(function()
 
 	if not getgenv().AutoGuard then return end
 
-    if game:GetService("Players").LocalPlayer.Values.InGame.Value == true then
-    else return
+    if game:GetService("Players").LocalPlayer.Values.InGame.Value ~= true then
+    return
 end
 
 	local myChar = LocalPlayer.Character
