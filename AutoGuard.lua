@@ -119,7 +119,7 @@ end
 	end
 	end)
 
-game:GetService("Players")[tostring(findOpponent().opponent)].Values.Shooting.Changed:Connect(function(newValue)
+findOpponent().opponent.Values.Shooting.Changed:Connect(function(newValue)
 		print('check 0')
 	print(getgenv().AutoBlock)
     if newValue == true then
