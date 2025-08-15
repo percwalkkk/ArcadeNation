@@ -117,9 +117,8 @@ end
         ReplicatedStorage.Events.Guard:FireServer(true)
 
 	end
-	end)
-
-findOpponent().opponent.Values.Shooting.Changed:Connect(function(newValue)
+		if findOpponent().opponent then
+		findOpponent().opponent.Values.Shooting.Changed:Connect(function(newValue)
 		print('check 0')
 	print(getgenv().AutoBlock)
     if newValue == true then
@@ -130,3 +129,6 @@ findOpponent().opponent.Values.Shooting.Changed:Connect(function(newValue)
     end
 end
 end)
+		end
+
+	end)
