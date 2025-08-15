@@ -1,6 +1,8 @@
 -- Spinbot Script (Works While Moving)
 -- Toggle with "J"
 
+getgenv().SpinSpeed = 1
+
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local Players = game:GetService("Players")
