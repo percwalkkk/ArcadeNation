@@ -24,7 +24,7 @@ disableAutoRotate()
 local rotation = 0
 local spinsp;
 RunService.RenderStepped:Connect(function(dt)
-    spinsp = getgenv().SpinSpeed x 360
+    spinsp = getgenv().SpinSpeed * 360
 	if getgenv().SpinBot then
 		local char = LocalPlayer.Character
 		if char and char:FindFirstChild("HumanoidRootPart") then
