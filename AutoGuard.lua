@@ -35,6 +35,7 @@ local movementKeys = {
 	[Enum.KeyCode.A] = true,
 	[Enum.KeyCode.S] = true,
 	[Enum.KeyCode.D] = true,
+	[Enum.KeyCode.Thumbstick1] = true,
 }
 
 -- Handle input
