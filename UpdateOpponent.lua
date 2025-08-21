@@ -24,13 +24,6 @@ local UserInputService = game:GetService("UserInputService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local LocalPlayer = Players.LocalPlayer
-coroutine.wrap(function()
-RunService.RenderStepped:Connect(function()
-        getgenv().currentOpponent = findOpponent().opponent
-                getgenv().currentCourt = findOpponent().court
-                wait(1)
-    end)
-    end)()
 game:GetService("Players").LocalPlayer.Values.InGame.Changed:Connect(function()
   if game:GetService("Players").LocalPlayer.Values.InGame.Value == true then
   getgenv().currentOpponent = findOpponent().opponent
