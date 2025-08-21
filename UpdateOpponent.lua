@@ -18,12 +18,6 @@ end
 getgenv().currentOpponent = findOpponent().opponent
 getgenv().currentCourt = findOpponent().court
 
-local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local LocalPlayer = Players.LocalPlayer
 game:GetService("Players").LocalPlayer.Values.InGame.Changed:Connect(function()
   if game:GetService("Players").LocalPlayer.Values.InGame.Value == true then
   getgenv().currentOpponent = findOpponent().opponent
