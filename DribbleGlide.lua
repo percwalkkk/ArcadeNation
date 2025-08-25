@@ -7,7 +7,7 @@ local UserInputService = game:GetService("UserInputService")
 
 RunService.RenderStepped:Connect(function()
 if getgenv().DribbleGlide then
-        if game:GetService("Players").LocalPlayer.Values.Basketball.Value ~= nil then
+        if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Ball") then
         game.Players.LocalPlayer.Character.Humanoid:Move(Vector3.new(0,0,-1), true) -- Always forward relative to camera
         local camCF = workspace.CurrentCamera.CFrame
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame:Lerp(
