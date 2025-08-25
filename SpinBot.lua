@@ -1,5 +1,3 @@
--- Spinbot Script (Works While Moving)
--- Toggle with "J"
 
 getgenv().SpinSpeed = 1
 
